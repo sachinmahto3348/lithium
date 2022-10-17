@@ -9,9 +9,19 @@ router.get('/test-me', function (req, res) {
 });
 
 router.get('/students', function (req, res){
-    console.log("The path params in the request are : ", req.params)
+    
+    console.log("The path params in the request are : ", req.query) // query
     let students = ['Sabiha', 'Neha', 'Akash']
-    res.send(students)
+    const index = req.query.index
+    res.send(students[index])
+})
+
+
+router.get('/student-list/:x', function (req, res){
+    
+    let students = ['Sabiha', 'Neha', 'Akash']
+    const index = req.params.index
+    res.send(students[index])
 })
 
 
@@ -32,7 +42,7 @@ router.get('/students/:studentName', function(req, res){
 })
 
 // Example 2 for path params
-router.get('/student-details/:name', function(req, res){
+router.get('/student-details/:x', function(req, res){
     let requestParams = req.params
     console.log("This is the request ", requestParams)
     let studentName = requestParams.name
@@ -41,3 +51,9 @@ router.get('/student-details/:name', function(req, res){
 })
 
 module.exports = router;
+
+
+/**
+ * get
+ * 
+ */
